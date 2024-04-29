@@ -64,6 +64,7 @@
             android:layout_below="@id/textViewMorningUpdateLabel"
             android:hint="HH:MM"
             android:inputType="text"
+            android:textColor="@color/Yellow"
             android:padding="16dp"
             android:layout_marginBottom="16dp"
             />
@@ -84,6 +85,7 @@
             android:layout_below="@id/textViewEveningUpdateLabel"
             android:hint="HH:MM"
             android:inputType="text"
+            android:textColor="@color/Yellow"
             android:padding="13dp"
             android:layout_marginBottom="30dp"/>
 

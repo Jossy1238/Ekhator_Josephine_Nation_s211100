@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("JNWeather(s211100)");
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, theHomeFragment).commit();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

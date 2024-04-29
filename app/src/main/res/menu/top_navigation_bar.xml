@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/search"
-        android:icon="@drawable/serchicon"
+        android:icon="@drawable/custom_search_icon"
         android:title="Search"
         app:showAsAction="always"
         android:paddingStart="16dp"

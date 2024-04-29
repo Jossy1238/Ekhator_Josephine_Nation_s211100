@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--     Name                 Josephine Nation Ekhator-->
+<!--     Student ID           s211100-->
+<resources>
+    <style name="CustomToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+    <style name="SpinnerTheme" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/Yellow</item>
+    </style>
+
+
+</resources>

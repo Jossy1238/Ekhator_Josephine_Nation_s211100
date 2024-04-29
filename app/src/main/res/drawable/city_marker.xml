@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--     Name                 Josephine Nation Ekhator-->
+<!--     Student ID           s211100-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,4C15.16,4 8,11.16 8,20c0,11.76 16,24 16,24s16-12.24 16-24C40,11.16 32.84,4 24,4z" />
+
+    <path
+        android:fillColor="#FF5722"
+        android:pathData="M24,22c-1.1,0 -2,-0.9 -2,-2s0.9,-2 2,-2s2,0.9 2,2S25.1,22 24,22z" />
+
+    <text
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="14°C"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:layout_x="12dp"
+        android:layout_y="32dp" />
+
+    <text
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunny"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:layout_x="12dp"
+        android:layout_y="44dp" />
+
+</vector>

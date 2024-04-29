@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--     Name                 Josephine Nation Ekhator-->
+<!--     Student ID           s211100-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle">
+            <solid android:color="@color/Blue" /> <!-- Background color -->
+            <corners android:radius="36dp" /> <!-- Rounded corners radius -->
+        </shape>
+    </item>
+</selector>

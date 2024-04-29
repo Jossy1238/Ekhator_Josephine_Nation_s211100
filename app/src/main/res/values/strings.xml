@@ -1,0 +1,39 @@
+<!--     Name                 Josephine Nation Ekhator-->
+<!--     Student ID           s211100-->
+
+<resources>
+    <string name="app_name">Ekhator_josephine_nation_s211100</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map_content_description">Map showing locations</string>
+    <string-array name="campuses">
+        <item>Glasgow</item>
+        <item>London</item>
+        <item>NewYork</item>
+        <item>Oman</item>
+        <item>Mauritius</item>
+        <item>Bangladesh</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+
+    <string name="back">Back</string>
+
+    <string name="appname">Weather Forecast</string>
+    <string name="app_logo">Weather Forecast</string>
+    <string name="about_app_description">Get the latest weather updates and forecasts for your city.</string>
+    <string name="features_title">Features</string>
+    <string name="feature_3_day_forecast">3-Day Forecast</string>
+    <string name="feature_real_time_update">Real-Time Updates</string>
+    <string name="feature_compare_cities">Compare Cities</string>
+    <string name="button_learn_more">Learn More</string>
+
+    <string-array name="help_options">
+        <item>Technical Issue</item>
+        <item>Others</item>
+    </string-array>
+
+</resources>

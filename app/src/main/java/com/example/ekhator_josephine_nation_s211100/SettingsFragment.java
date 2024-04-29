@@ -172,40 +172,6 @@ public class SettingsFragment extends Fragment {
 
 
     }
-//
-//    private void saveSettings() {
-//        // Get entered values
-//        String morningUpdateTime = morningUpdateEditText.getText().toString();
-//        String eveningUpdateTime = eveningUpdateEditText.getText().toString();
-//        String selectedCampus = campusSpinner.getSelectedItem().toString();
-//        String campusUrl = getCityUrlByName(selectedCampus);
-//        String selectedTheme = themeSpinner.getSelectedItem().toString();
-//
-//        // Check if morningUpdateTime and eveningUpdateTime are not empty
-//        if (!morningUpdateTime.isEmpty() && !eveningUpdateTime.isEmpty()) {
-//            // Save settings to SharedPreferences
-//            SharedPreferences.Editor editor = getActivity().getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE).edit();
-//            editor.putString(MORNING_UPDATE_TIME_KEY, morningUpdateTime);
-//            editor.putString(EVENING_UPDATE_TIME_KEY, eveningUpdateTime);
-//            editor.putString(CAMPUS_KEY, campusUrl);
-//            editor.putString(THEME_KEY, selectedTheme);
-//            editor.apply();
-//
-//            // Log SharedPreferences
-//            String logMessage = "Morning Update Time: " + morningUpdateTime +
-//                    ", Evening Update Time: " + eveningUpdateTime +
-//                    ", Campus: " + selectedCampus +
-//                    ", Theme: " + selectedTheme;
-//            Log.d("SettingsFragment", logMessage);
-//
-//            // Show success message
-//            Toast.makeText(getActivity(), "Settings saved", Toast.LENGTH_SHORT).show();
-//            WeatherUpdateScheduler.scheduleWeatherUpdates(getActivity());
-//        } else {
-//            // Show an error message if either morningUpdateTime or eveningUpdateTime is empty
-//            Toast.makeText(getActivity(), "Please enter both morning and evening update times", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
 
 

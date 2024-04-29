@@ -40,14 +40,6 @@ public class MoreFragment extends Fragment {
             }
         });
 
-//        // Set click listener for the Compare Cities layout
-//        LinearLayout compareCitiesLayout = view.findViewById(R.id.compareCitiesFragmentRoot);
-//        compareCitiesLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                navigateToCompareCitiesFragment();
-//            }
-//        });
 
         // Set click listener for the About This App layout
         LinearLayout aboutThisAppLayout = view.findViewById(R.id.aboutThisAppRoot);

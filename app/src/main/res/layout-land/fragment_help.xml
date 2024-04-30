@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--     Name                 Josephine Nation Ekhator-->
+<!--     Student ID           s211100-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:background="@color/BgBlue"
+    tools:context=".HelpFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        >
+
+        <!-- Back arrow button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/back"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:padding="16dp"
+            app:tint="@color/Yellow"
+            />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Need Some Help?"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Home Icon Description -->
+        <!-- Question 1 -->
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q: How can I view the weather forecast for the next three days"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/textViewTitle"
+            android:layout_marginTop="8dp" />
+
+        <!--Answer 1 -->
+        <TextView
+            android:id="@+id/HomeIconDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question1"
+            android:text="Tap the Home icon to view the weather forecast for the next three days, including today, tomorrow, and the day after tomorrow."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+
+        <!-- Map Icon Description -->
+        <!-- Question 2 -->
+        <TextView
+            android:id="@+id/question2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q: How can I explore a map of cities and see their current weather information?"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/HomeIconDescription1"
+            android:layout_marginTop="8dp" />
+
+        <!--Answer 2 -->
+        <TextView
+            android:id="@+id/MapIconDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question2"
+            android:text="Click on the Map icon to explore a map of cities. You can tap on a city's marker to see its current weather information."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+
+        <!-- More Icon Description -->
+        <!-- Question 3 -->
+        <TextView
+            android:id="@+id/question3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q: How can I adjust settings such as the update interval and switch between dark and light modes?"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/MapIconDescription1"
+            android:layout_marginTop="8dp" />
+
+        <!--Answer 3 -->
+        <TextView
+            android:id="@+id/MoreIconDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question3"
+            android:text="Access the More screen by tapping the More icon. Here, you can adjust settings such as the update interval and switch between dark and light modes."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+
+        <!-- Compare Button Description -->
+        <!-- Question 4 -->
+        <TextView
+            android:id="@+id/question4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q: How can I compare the weather conditions of two cities simultaneously?"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/MoreIconDescription1"
+            android:layout_marginTop="8dp" />
+
+        <!--Answer 4 -->
+        <TextView
+            android:id="@+id/CompareCitiesDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question4"
+            android:text="On the More screen, tap the Compare button to compare the weather conditions of two cities simultaneously."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+
+        <!-- About The App Button Description -->
+        <!-- Question 5 -->
+        <TextView
+            android:id="@+id/question5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q: How can I learn more about the app?"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/CompareCitiesDescription"
+            android:layout_marginTop="8dp" />
+
+        <!--Answer 5 -->
+        <TextView
+            android:id="@+id/AbouttheappButtonDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question5"
+            android:text="Learn more about the app by tapping the About The App button on the More screen."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+
+        <!-- Help Button Description -->
+        <!-- Question 6 -->
+        <TextView
+            android:id="@+id/question6.1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q: How can I access instructions and guidance for using the app?"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/AbouttheappButtonDescription1"
+            android:layout_marginTop="8dp" />
+
+        <!--Answer 6 -->
+        <TextView
+            android:id="@+id/HelpDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question6.1"
+            android:textColor="@color/white"
+            android:text="Need help using the app? Tap the Help button on the More screen to access instructions and guidance."
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Contact Us Button Description -->
+        <!-- Question 7 -->
+        <TextView
+            android:id="@+id/question7.1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q: How can I get in touch with the Weather App company for inquiries or support?"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/HelpDescription1"
+            android:layout_marginTop="8dp" />
+
+        <!--Answer 7 -->
+        <TextView
+            android:id="@+id/ContactUsDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question7.1"
+            android:text="For any inquiries or support, tap the Contact Us button on the More screen to get in touch with the Weather App company."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+
+    </RelativeLayout>
+
+</ScrollView>

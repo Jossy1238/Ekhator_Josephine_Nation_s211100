@@ -57,15 +57,6 @@ public class Onboarding_screen3 extends AppCompatActivity {
             }
         });
 
-        // Find the "Skip" TextView and set its click listener
-        TextView textViewSkip = findViewById(R.id.textViewSkip);
-        textViewSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Onboarding_screen3.this, MainActivity.class));
-                finish();
-            }
-        });
 
     }
 }

@@ -13,6 +13,9 @@
 package com.example.ekhator_josephine_nation_s211100;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,8 +51,7 @@ public class SearchFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private CityAdapter cityAdapter;
-    private List<CurrentWeather> citiesWeather;
-    private List<String> cityUrls; // Store URLs corresponding to each city
+    private List<CityWeather> cityWeathers; // Updated to use CityWeather objects
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,14 +66,8 @@ public class SearchFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        citiesWeather = new ArrayList<>();
-        cityUrls = new ArrayList<>();
-        cityAdapter = new CityAdapter(citiesWeather, cityUrls, new CityAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, String url) {
-                navigateToHomeFragment(url);
-            }
-        });
+        cityWeathers = new ArrayList<>();
+        cityAdapter = new CityAdapter(cityWeathers, (position, cityWeather) -> navigateToHomeFragment(cityWeather.getUrl()));
         recyclerView.setAdapter(cityAdapter);
 
         String[] urls = {
@@ -83,8 +79,6 @@ public class SearchFragment extends Fragment {
                 "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/1185241"
         };
 
-        cityUrls.addAll(Arrays.asList(urls));
-
         ExecutorService executorService = Executors.newFixedThreadPool(urls.length);
         for (String url : urls) {
             fetchCityData(executorService, url);
@@ -93,14 +87,28 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     private void fetchCityData(ExecutorService executorService, String urlLink) {
         executorService.submit(() -> {
+            if (!isNetworkAvailable()) {
+                getActivity().runOnUiThread(() -> {
+                    Toast.makeText(getContext(), "Please connect to a network", Toast.LENGTH_LONG).show();
+                });
+                return;
+            }
+
             CurrentWeather currentWeather = new CurrentWeather();
-            List<CurrentWeather> weathers = currentWeather.parseXMLFromFuture(getContext(),urlLink);
+            List<CurrentWeather> weathers = currentWeather.parseXMLFromFuture(getContext(), urlLink);
 
             if (weathers != null && !weathers.isEmpty()) {
                 getActivity().runOnUiThread(() -> {
-                    citiesWeather.add(weathers.get(0));
+                    cityWeathers.add(new CityWeather(weathers.get(0), urlLink));
                     cityAdapter.notifyDataSetChanged();
                 });
             } else {
@@ -108,6 +116,8 @@ public class SearchFragment extends Fragment {
             }
         });
     }
+
+
 
     private void navigateToHomeFragment(String url) {
         // Create a new instance of the Home fragment and set the URL as an argument
@@ -123,4 +133,3 @@ public class SearchFragment extends Fragment {
         transaction.commit();
     }
 }
-

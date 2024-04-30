@@ -12,6 +12,7 @@
 package com.example.ekhator_josephine_nation_s211100;
 
 import static com.example.ekhator_josephine_nation_s211100.FetchWeatherTask.getCityIdByName;
+import static com.example.ekhator_josephine_nation_s211100.SettingsFragment.CAMPUS_KEY;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -27,6 +28,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+
 public class WeatherUpdateReceiver extends BroadcastReceiver {
 
     public static final String TAG = "WeatherUpdateReceiver";
@@ -35,13 +37,18 @@ public class WeatherUpdateReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.d(TAG, "Weather update received");
 
+
+        // Ensure the notification channel is created before fetching weather data
+        NotificationUtils.createNotificationChannel(context);
+
         // Get city name from SharedPreferences
         SharedPreferences sharedPreferences = context.getSharedPreferences("WeatherPrefs", Context.MODE_PRIVATE);
-        String cityName = sharedPreferences.getString("CityName", "London");
+        String cityName = sharedPreferences.getString(CAMPUS_KEY, "London");
 
         // Get city ID from city name
         String cityId = getCityIdByName(cityName);
-
+        Log.d("XCV", cityName);
+        Log.d("XCV", "Updating.....");
 
         // Construct URL with city ID
         String url = "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/" + cityId;
@@ -53,6 +60,7 @@ public class WeatherUpdateReceiver extends BroadcastReceiver {
         Future<MapWeatherData> future = executor.submit(() -> {
             CurrentWeather currentWeather = FetchWeatherTask.parseXMLFromURL(url);
             if (currentWeather != null) {
+                Log.d("XCV", currentWeather.toString());
                 return FetchWeatherTask.getMapWeatherData(currentWeather);
             }
             return null;
@@ -61,13 +69,8 @@ public class WeatherUpdateReceiver extends BroadcastReceiver {
         try {
             MapWeatherData mapWeatherData = future.get();
             if (mapWeatherData != null) {
-                // Display received weather data in the notification
-                String location = mapWeatherData.getLocation();
-                String notificationContent =
-                        "Min Temp: " + mapWeatherData.getMinimumTemperature() + "\n" +
-                                "Max Temp: " + mapWeatherData.getMaximumTemperature() + "\n" +
-                                "Pressure: " + mapWeatherData.getPressure() + "\n" +
-                                "Humidity: " + mapWeatherData.getHumidity();
+                // Display received weather data in the notification (no activity launch)
+                String notificationContent = buildDetailedWeatherString(mapWeatherData);
 
                 // Send notification
                 NotificationUtils.createNotificationChannel(context);
@@ -78,5 +81,16 @@ public class WeatherUpdateReceiver extends BroadcastReceiver {
         }
 
         executor.shutdown();
+    }
+
+    // Helper method to build a detailed weather string
+    private String buildDetailedWeatherString(MapWeatherData mapWeatherData) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Min Temp: ").append(mapWeatherData.getMinimumTemperature()).append("\n");
+        sb.append("Max Temp: ").append(mapWeatherData.getMaximumTemperature()).append("\n");
+        sb.append("Pressure: ").append(mapWeatherData.getPressure()).append("\n");
+        sb.append("Humidity: ").append(mapWeatherData.getHumidity()).append("\n");
+        sb.append("Location: ").append(mapWeatherData.getLocation()).append("\n");
+        return sb.toString();
     }
 }

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--     Name                 Josephine Nation Ekhator-->
+<!--     Student ID           s211100-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/BgBlue"
+    android:padding="16dp"
+    android:layout_marginTop="20dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
+
+        <!-- Back arrow button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/back"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:padding="16dp"
+            app:tint="@color/Yellow"
+            />
+
+
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/textViewMorningUpdateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Morning Update Time"
+            android:textColor="@color/white"
+            android:layout_below="@id/textViewTitle"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextMorningUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewMorningUpdateLabel"
+            android:hint="HH:MM"
+            android:inputType="text"
+            android:textColor="@color/Yellow"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            />
+
+        <TextView
+            android:id="@+id/textViewEveningUpdateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Evening Update Time"
+            android:textColor="@color/white"
+            android:layout_below="@id/editTextMorningUpdate"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextEveningUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewEveningUpdateLabel"
+            android:hint="HH:MM"
+            android:inputType="text"
+            android:textColor="@color/Yellow"
+            android:padding="13dp"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/textViewCampusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Campus"
+            android:textColor="@color/white"
+            android:layout_below="@id/editTextEveningUpdate"
+            android:layout_marginTop="16dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerCampusOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewCampusLabel"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/campuses"
+            android:padding="16dp"
+            android:backgroundTint="@color/Yellow"
+
+            />
+
+        <TextView
+            android:id="@+id/textViewThemeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Theme"
+            android:textColor="@color/white"
+            android:layout_below="@id/spinnerCampusOptions"
+            android:layout_marginTop="16dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerThemeOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewThemeLabel"
+            android:layout_marginBottom="30dp"
+            android:entries="@array/themes"
+            android:padding="16dp"
+            android:popupBackground="@color/white"
+            android:backgroundTint="@color/Yellow"
+            />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/buttonSaveSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Blue"
+            android:textColor="@color/Yellow"
+            android:layout_below="@id/spinnerThemeOptions"
+            android:text="Save Settings"/>
+    </RelativeLayout>
+</ScrollView>

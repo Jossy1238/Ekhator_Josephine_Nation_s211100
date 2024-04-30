@@ -11,32 +11,28 @@
 //
 package com.example.ekhator_josephine_nation_s211100;
 
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.content.Context.MODE_PRIVATE;
+import static androidx.core.app.ActivityCompat.recreate;
 import static com.example.ekhator_josephine_nation_s211100.FetchWeatherTask.getCityUrlByName;
-import static com.example.ekhator_josephine_nation_s211100.NotificationUtils.showNotification;
-import static java.util.Collections.addAll;
+import static com.example.ekhator_josephine_nation_s211100.NotificationUtils.createNotificationChannel;
+import static com.example.ekhator_josephine_nation_s211100.NotificationUtils.requestNotificationPermission;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SettingsFragment extends Fragment {
 
@@ -71,71 +67,11 @@ public class SettingsFragment extends Fragment {
         themeSpinner = rootView.findViewById(R.id.spinnerThemeOptions);
         saveSettingsButton = rootView.findViewById(R.id.buttonSaveSettings);
 
-        // Set hint text color
-        morningUpdateEditText.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow));
-        eveningUpdateEditText.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow));
-
-        // Initialize and set the adapter for the campusSpinner
-        ArrayAdapter<String> campusSpinnerAdapter = new ArrayAdapter<String>(requireContext(), R.layout.spinner_item, new ArrayList<String>() {{
-            addAll(Arrays.asList(getResources().getStringArray(R.array.campuses)));
-        }}) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView textView = (TextView) view.findViewById(android.R.id.text1);
-                textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow));
-                return view;
-            }
-
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView textView = (TextView) view.findViewById(android.R.id.text1);
-                textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow));
-                return view;
-            }
-        };
-        campusSpinner.setAdapter(campusSpinnerAdapter);
-
-        // Initialize and set the adapter for the themeSpinner
-        ArrayAdapter<String> themeSpinnerAdapter = new ArrayAdapter<String>(requireContext(), R.layout.spinner_item, new ArrayList<String>() {{
-            addAll(Arrays.asList(getResources().getStringArray(R.array.themes)));
-        }}) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView textView = (TextView) view.findViewById(android.R.id.text1);
-                textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow));
-                return view;
-            }
-
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView textView = (TextView) view.findViewById(android.R.id.text1);
-                textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow));
-                return view;
-            }
-        };
-        themeSpinner.setAdapter(themeSpinnerAdapter);
-
-        campusSpinner.setPopupBackgroundResource(R.color.Blue);
-        themeSpinner.setPopupBackgroundResource(R.color.Blue);
-
         // Set click listener for the save settings button
         saveSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveSettings();
-            }
-        });
-
-        // Set click listener for the back button
-        ImageButton backButton = rootView.findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getParentFragmentManager().popBackStack();
             }
         });
 
@@ -169,10 +105,26 @@ public class SettingsFragment extends Fragment {
         // Show success message
         Toast.makeText(getActivity(), "Settings saved", Toast.LENGTH_SHORT).show();
         WeatherUpdateScheduler.scheduleWeatherUpdates(getActivity());
+        createNotificationChannel(getContext());
+        requestNotificationPermission(getContext());
+        changeTheme(getActivity());
 
 
     }
 
+    public static void changeTheme(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_FILE_NAME,  MODE_PRIVATE);
+        String themeSetting = prefs.getString(THEME_KEY , "Light");
+        Log.d("DF",themeSetting);
 
+
+        if (themeSetting.equals("Dark")) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            Log.d("DF","Theme is in dark mode");
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            Log.d("DF","Theme is in light mode");
+        }
+    }
 
 }

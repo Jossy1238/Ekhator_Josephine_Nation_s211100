@@ -38,10 +38,6 @@ public class MainActivity extends AppCompatActivity {
     MoreFragment moreFragment = new MoreFragment();
     SettingsFragment settingsFragment = new SettingsFragment();
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("JNWeather(s211100)");
 
-
+       // Set the default selected item in the BottomNavigationView to the home item
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,theHomeFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;

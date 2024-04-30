@@ -24,17 +24,13 @@ import java.util.List;
 import android.util.Log;
 
 
-
-
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder> {
 
-    private List<CurrentWeather> myWeather;
-    private static List<String> cityUrls; // Store URLs corresponding to each city
+    private static List<CityWeather> cityWeathers;
     private OnItemClickListener onItemClickListener;
 
-    public CityAdapter(List<CurrentWeather> weather, List<String> urls, OnItemClickListener listener) {
-        this.myWeather = weather;
-        this.cityUrls = urls;
+    public CityAdapter(List<CityWeather> cityWeathers, OnItemClickListener listener) {
+        this.cityWeathers = cityWeathers;
         this.onItemClickListener = listener;
     }
 
@@ -47,13 +43,13 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CityViewHolder holder, int position) {
-        CurrentWeather weather = myWeather.get(position);
-        holder.bind(weather);
+        CityWeather cityWeather = cityWeathers.get(position);
+        holder.bind(cityWeather);
     }
 
     @Override
     public int getItemCount() {
-        return myWeather.size();
+        return cityWeathers.size();
     }
 
     public static class CityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -61,6 +57,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
         public TextView weatherConditionTextView;
         public TextView minMaxTemperatureTextView;
         public ImageView weatherIconImageView;
+
         private OnItemClickListener onItemClickListener;
 
         public CityViewHolder(@NonNull View itemView, OnItemClickListener listener) {
@@ -73,13 +70,24 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
             itemView.setOnClickListener(this);
         }
 
-        public void bind(CurrentWeather weather) {
+        public void bind(CityWeather cityWeather) {
+            CurrentWeather weather = cityWeather.getCurrentWeather();
             cityNameTextView.setText(weather.getCity());
             weatherConditionTextView.setText(weather.getCondition());
             minMaxTemperatureTextView.setText(weather.getMinimumTemperature());
 
             // Set the weather icon based on the weather condition
             setWeatherIcon(weather.getCondition());
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (onItemClickListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClickListener.onItemClick(position, cityWeathers.get(position));
+                }
+            }
         }
 
         private void setWeatherIcon(String condition) {
@@ -112,25 +120,13 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
 
             weatherIconImageView.setImageResource(iconResource);
         }
-
-
-
-        @Override
-        public void onClick(View v) {
-            if (onItemClickListener != null) {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    String url = cityUrls.get(position);
-                    onItemClickListener.onItemClick(position, url);
-                }
-            }
-        }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position, String url);
+        void onItemClick(int position, CityWeather cityWeather);
     }
 }
+
 
 
 

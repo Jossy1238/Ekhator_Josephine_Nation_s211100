@@ -13,8 +13,11 @@ package com.example.ekhator_josephine_nation_s211100;
 
 import static android.content.ContentValues.TAG;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -48,6 +51,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,10 +63,11 @@ import java.io.InputStream;
 public class NotificationUtils extends Context {
 
     private static final String CHANNEL_ID = "WeatherUpdates";
+    private static final int NOTIFICATION_PERMISSION_CODE = 123;
 
     public static void createNotificationChannel(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = CHANNEL_ID;
+            CharSequence name = "Weather Updates";
             String description = "Notification channel for weather updates";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
@@ -73,22 +78,45 @@ public class NotificationUtils extends Context {
         }
     }
 
+
+
+
     public static void showNotification(Context context, String title, String content) {
         if (!areNotificationsEnabled(context)) {
-            requestNotificationPermission(context);
-            return;
+            // Notifications are not enabled. Show a notification that directs the user to the app's notification settings.
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.homeiconp)
+                    .setContentTitle("Notifications Disabled")
+                    .setContentText("Please enable notifications for this app in Settings.")
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentIntent(getNotificationSettingsIntent(context)); // Direct the user to the app's notification settings
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.notify(0, builder.build());
+        } else {
+            // Notifications are enabled. Show the weather update notification.
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.homeiconp)
+                    .setContentTitle(title)
+                    .setContentText(content)
+                    .setAutoCancel(true);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.notify(0, builder.build());
         }
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context,  CHANNEL_ID)
-                .setSmallIcon(R.drawable.homeiconp)
-                .setContentTitle(title)
-                .setContentText(content)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        Log.d(TAG, "Showing notification");
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(0, builder.build());
     }
+
+
+    private static PendingIntent getNotificationSettingsIntent(Context context) {
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
+        // Use FLAG_IMMUTABLE for the PendingIntent
+        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+    }
+
+
+
 
 
     public static boolean areNotificationsEnabled(Context context) {
@@ -96,14 +124,32 @@ public class NotificationUtils extends Context {
         return notificationManager.areNotificationsEnabled();
     }
 
+
+
+
     public static void requestNotificationPermission(Context context) {
-        Intent intent = new Intent();
-        intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-        intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
-        context.startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // Check if the app has the permission to post notifications
+            if (!NotificationManagerCompat.from(context).areNotificationsEnabled()) {
+                // Notifications are not enabled. Show a notification that directs the user to the app's notification settings.
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
+                // Use FLAG_IMMUTABLE for the PendingIntent
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                        .setSmallIcon(R.drawable.homeiconp)
+                        .setContentTitle("Notifications Disabled")
+                        .setContentText("Please enable notifications for this app in Settings.")
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setContentIntent(pendingIntent); // Direct the user to the app's notification settings
+
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                notificationManager.notify(0, builder.build());
+            }
+        }
     }
-
-
 
     @Override
     public AssetManager getAssets() {
@@ -629,5 +675,4 @@ public class NotificationUtils extends Context {
         return false;
     }
 }
-
 

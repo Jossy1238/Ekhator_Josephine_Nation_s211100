@@ -27,8 +27,8 @@
             android:gravity="center"
             android:background="@drawable/the_shape_of_homepage"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="25dp"
             >
 
             <LinearLayout
@@ -49,6 +49,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
                     android:orientation="vertical">
 
                     <!-- Date and Time -->
@@ -386,6 +388,7 @@
 
     </ScrollView>
 
+
     <!-- 3-Day Forecast Section Title -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -417,7 +420,7 @@
         <LinearLayout
             android:id="@+id/todayLinear"
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
@@ -506,7 +509,7 @@
         <LinearLayout
             android:id="@+id/tommorrowLinear"
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
@@ -597,7 +600,7 @@
         <LinearLayout
             android:id="@+id/futureLinear"
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
             android:background="@drawable/the_shape_of_homepage"
@@ -681,5 +684,7 @@
 
         </LinearLayout>
     </LinearLayout>
+
+
 
 </LinearLayout>

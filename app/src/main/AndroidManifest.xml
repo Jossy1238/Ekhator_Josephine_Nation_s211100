@@ -39,6 +39,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDK4yXYEnzTPlp1QANm1b4rNgX2KH7s5n0" />
 
+        <receiver android:name=".WeatherUpdateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <!-- Add any other actions you want to receive here -->
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".MapsActivity"
             android:exported="false"

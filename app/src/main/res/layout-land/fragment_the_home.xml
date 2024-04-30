@@ -51,10 +51,13 @@
 
                     <!-- Mini Display: Date, Time, Current Temperature, Feels Like -->
                     <LinearLayout
-                        android:layout_width="406dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:layout_marginTop="30dp"
+                        android:layout_marginStart="100dp"
+                        android:orientation="vertical"
+                        >
 
                         <!-- Date and Time -->
                         <TextView
@@ -62,6 +65,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Mauritius"
+                            android:layout_marginTop="20dp"
                             android:textColor="@color/white"
                             android:textSize="20sp" />
 
@@ -96,13 +100,24 @@
 
                     </LinearLayout>
 
-                    <!-- Sun Icon -->
-                    <ImageView
-                        android:id="@+id/sun_icon"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="104dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:src="@drawable/day_partial_cloud" />
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/sun_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="150dp"
+                            android:src="@drawable/snow" />
+
+                    </LinearLayout>
+                    <!-- Sun Icon -->
+
 
                 </LinearLayout>
 
@@ -114,8 +129,7 @@
                     android:layout_marginBottom="25dp"
                     android:paddingTop="20dp"
                     >
-
-                    <!-- Sunrise -->
+                    <!-- Wind Speed/Direction -->
                     <LinearLayout
                         android:layout_width="104dp"
                         android:layout_height="wrap_content"
@@ -123,54 +137,25 @@
                         android:orientation="vertical"
                         android:gravity="center">
 
-                        <!-- Text View for "Sunrise" -->
                         <TextView
-                            android:id="@+id/text_sunrise_label"
+                            android:id="@+id/text_wind_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sunrise"
+                            android:text="Wind"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
 
-                        <!-- Text View for displaying the sunrise time -->
                         <TextView
-                            android:id="@+id/text_sunrise"
+                            android:id="@+id/text_wind"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Sunrise"
+                            android:text="Wind Val"
                             android:textColor="@color/white"
                             android:textSize="14sp"/>
                     </LinearLayout>
 
 
-                    <!-- Sunset -->
-                    <LinearLayout
-                        android:layout_width="104dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <!-- Text View for "Sunrise" -->
-                        <TextView
-                            android:id="@+id/text_sunset_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sunset"
-                            android:textColor="@color/white"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/text_sunset"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Sunset"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"/>
-
-                    </LinearLayout>
 
                     <!-- UV Risk -->
                     <LinearLayout
@@ -210,6 +195,34 @@
                     android:orientation="horizontal"
                     android:layout_marginBottom="25dp"
                     >
+
+                    <!-- Sunrise -->
+                    <LinearLayout
+                        android:layout_width="104dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <!-- Text View for "Sunrise" -->
+                        <TextView
+                            android:id="@+id/text_sunrise_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sunrise"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <!-- Text View for displaying the sunrise time -->
+                        <TextView
+                            android:id="@+id/text_sunrise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sunrise"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
 
                     <!-- Min Temperature -->
 
@@ -358,8 +371,7 @@
                             android:textSize="14sp"/>
                     </LinearLayout>
 
-                    <!-- Wind Speed/Direction -->
-
+                    <!-- Sunset -->
                     <LinearLayout
                         android:layout_width="104dp"
                         android:layout_height="wrap_content"
@@ -367,23 +379,28 @@
                         android:orientation="vertical"
                         android:gravity="center">
 
+                        <!-- Text View for "Sunrise" -->
                         <TextView
-                            android:id="@+id/text_wind_label"
+                            android:id="@+id/text_sunset_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Wind"
+                            android:text="Sunset"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/text_wind"
+                            android:id="@+id/text_sunset"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Wind Val"
+                            android:text="Sunset"
                             android:textColor="@color/white"
                             android:textSize="14sp"/>
+
                     </LinearLayout>
+
+
+
                 </LinearLayout>
 
             </LinearLayout>

@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -74,6 +75,17 @@ public class SettingsFragment extends Fragment {
                 saveSettings();
             }
         });
+
+
+        // Set click listener for the back button
+        ImageButton backButton = rootView.findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getParentFragmentManager().popBackStack();
+            }
+        });
+
 
         return rootView;
     }

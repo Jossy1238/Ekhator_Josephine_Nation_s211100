@@ -1,15 +1,6 @@
-/*  Starter project for Mobile Platform Development in main diet 2023/2024
-    You should use this project as the starting point for your assignment.
-    This project simply reads the data from the required URL and displays the
-    raw data in a TextField
-*/
-
-//
-// Name                 Josephine Nation Ekhator
-// Student ID           s211100
-// Programme of Study   Computing
-//
 package com.example.ekhator_josephine_nation_s211100;
+
+
 
 import static android.content.ContentValues.TAG;
 import static com.example.ekhator_josephine_nation_s211100.SettingsFragment.EVENING_UPDATE_TIME_KEY;
@@ -26,6 +17,8 @@ import android.os.Build;
 import android.util.Log;
 
 import java.util.Calendar;
+
+
 
 public class WeatherUpdateScheduler {
 
@@ -81,5 +74,3 @@ public class WeatherUpdateScheduler {
         EVENING_UPDATE
     }
 }
-
-

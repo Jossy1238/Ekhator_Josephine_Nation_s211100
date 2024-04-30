@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--     Name                 Josephine Nation Ekhator-->
 <!--     Student ID           s211100-->
 
@@ -15,12 +16,13 @@
         android:orientation="vertical"
         >
 
+
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="218dp"
-            android:layout_height="252dp"
+            android:layout_width="300dp"
+            android:layout_height="130dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="10dp"
             app:srcCompat="@drawable/lightningonboard" />
 
         <TextView
@@ -29,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/imageView2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
             android:shadowColor="#80000000"
             android:shadowDx="4"
             android:shadowDy="4"
             android:shadowRadius="10"
-            android:text="Check Real-Time\nWeather Update"
+            android:text="Discover the Weather\nin your City"
             android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
@@ -49,9 +51,10 @@
             android:layout_marginTop="13dp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAlignment="center"
-            android:text="Stay informed with real-time weather\nupdates for timely decision-making,\nplanning and preparedness"
+            android:text="Get to Know your Weather Details\nand Anticipated Forecast"
+
             />
 
 
@@ -60,46 +63,61 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textView3"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="10sp"
             android:textStyle="italic"
             android:textAlignment="center"
             android:text="s211100"
 
             />
 
-        <Button
-            android:id="@+id/button"
+
+        <LinearLayout
+            android:id="@+id/buttonAndSkipLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/homebtn"
-            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-            android:text="Next"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_marginStart="80dp"
-            android:layout_marginEnd="80dp"
-            />
+            android:layout_below="@id/textView4"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:paddingBottom="10dp">
 
-        <TextView
-            android:id="@+id/textViewSkip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="Skip"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="16dp" />
+
+            <TextView
+                android:id="@+id/textViewSkip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:background="@drawable/homebtn"
+                android:text="Skip"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_marginStart="250dp"
+                android:layout_marginEnd="100dp"
+                android:gravity="center"
+                />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/homebtn"
+                android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginEnd="200dp"
+                />
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 

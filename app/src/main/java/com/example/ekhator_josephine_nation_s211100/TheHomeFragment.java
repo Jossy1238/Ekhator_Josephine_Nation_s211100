@@ -24,9 +24,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -98,6 +101,7 @@ public class TheHomeFragment extends Fragment {
         text_humidity = view.findViewById(R.id.text_humidity);
         text_wind = view.findViewById(R.id.text_wind);
 
+
         // For 3 days forecast fields
         // First day
         first_day_condition = view.findViewById(R.id.first_day_condition);
@@ -118,6 +122,7 @@ public class TheHomeFragment extends Fragment {
         forecast_today_icon = view.findViewById(R.id.forecast_today_icon);
         forecast_tomorrow_icon = view.findViewById(R.id.forecast_tomorrow_icon);
         forecast_dayAfterTomorrow_icon = view.findViewById(R.id.forecast_dayAfterTomorrow_icon);
+
 
 
         // Fetch selected city name and URL from SharedPreferences
